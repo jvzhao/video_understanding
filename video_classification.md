@@ -61,15 +61,35 @@ Gate-Shift Networks for Video Action Recognition: C3D S3D GST CSN TSM GSM都是�
 
 数据集:
 
-* [HMDB51](https://github.com/open-mmlab/mmaction2/blob/master/tools/data/hmdb51/README_zh-CN.md) ([主页](https://serre-lab.clps.brown.edu/resource/hmdb-a-large-human-motion-database/)) (ICCV'2011)
-* [SthV1](https://github.com/open-mmlab/mmaction2/blob/master/tools/data/sthv1/README_zh-CN.md) ([主页](https://20bn.com/datasets/something-something/v1/)) (ICCV'2017)
-* [SthV2](https://github.com/open-mmlab/mmaction2/blob/master/tools/data/sthv2/README_zh-CN.md) ([主页](https://20bn.com/datasets/something-something/)) (ICCV'2017)
-* [Diving48](https://github.com/open-mmlab/mmaction2/blob/master/tools/data/diving48/README_zh-CN.md) ([主页](http://www.svcl.ucsd.edu/projects/resound/dataset.html)) (ECCV'2018)
-* [Jester](https://github.com/open-mmlab/mmaction2/blob/master/tools/data/jester/README_zh-CN.md) ([主页](https://20bn.com/datasets/jester/v1)) (ICCV'2019)
-* [Multi-Moments in Time](https://github.com/open-mmlab/mmaction2/blob/master/tools/data/mmit/README_zh-CN.md) ([主页](http://moments.csail.mit.edu/challenge_iccv_2019.html)) (ArXiv'2019)
-* [ HVU](https://github.com/open-mmlab/mmaction2/blob/master/tools/data/hvu/README_zh-CN.md) ([主页](https://github.com/holistic-video-understanding/HVU-Dataset)) (ECCV'2020)
-* [ OmniSource](https://github.com/open-mmlab/mmaction2/blob/master/tools/data/omnisource/README_zh-CN.md) ([主页](https://kennymckormick.github.io/omnisource/)) (ECCV'2020)
-* [FineGYM](https://github.com/open-mmlab/mmaction2/blob/master/tools/data/gym/README_zh-CN.md) ([主页](https://sdolivia.github.io/FineGym/)) (CVPR'2020)
+| 年份 | 数据集名称      | paper                                                        | 类别数 | 视频数        |
+| ---- | --------------- | ------------------------------------------------------------ | ------ | ------------- |
+| 2004 | KTH             | Recognizing human actions: a local svm approach              | 6      | 600           |
+| 2005 | Weizmann        | Actions as space-time shapes                                 | 9      | 81            |
+| 2008 |                 | Action mach: a spatio-temporal  maximum average correlation     height filter for action recognition. |        |               |
+| 2011 | HMDB            | HMDB:  A large video database for human motion recognition   | 51     | 6766          |
+| 2012 | UCF101          | UCF101: A     dataset of 101 human actions classes from videos in the wild | 101    | 13320         |
+| 2013 |                 | Towards understanding action recognition                     |        |               |
+| 2014 |                 | Jhu-isi gesture and skill  assessment working set (jigsaws): A surgical activity dataset for human  motion modeling. |        |               |
+| 2014 |                 | The language     of actions: Recovering the syntax and semantics of goaldirected human  activities |        |               |
+| 2015 | ActivityNet     | ActivityNet: A large-scale video benchmark for human activity  understanding | 200    | 28K           |
+| 2015 |                 | THUMOS challenge:Action  recognition with a large number of classes |        |               |
+| 2016 |                 | Hollywood in     homes: Crowdsourcing data collection for activity understanding. |        |               |
+| 2016 |                 | Human action localization with  sparse spatial supervision   |        |               |
+| 2016 |                 | Spot on: Action localization  from pointly-supervised proposals |        |               |
+| 2016 |                 | Recognizing fine-grained and  composite activities using hand-centric features and script data. |        |               |
+| 2017 | Kinetics        | Quo vadis, action     recognition? a new model and the kinetics dataset |        |               |
+| 2017 |                 | The something something  video     database for learning and evaluating visual common sense | 174    | 108.5K/220.8K |
+| 2018 |                 | Every moment counts:     Dense detailed labeling of actions in complex videos. |        |               |
+| 2018 |                 | What do i annotate next? an  empirical     study of active learning for action localization. |        |               |
+| 2018 |                 | Ava: A video dataset of  spatio-temporally localized atomic     visual actions |        |               |
+| 2018 |                 | Scaling egocentric vision: The  epic-kitchens     dataset.   |        |               |
+| 2019 | Moments in Time | Moments     in time dataset: one million videos for event understanding |        |               |
+| 2019 |                 | Hacs: Human action clips and  segments dataset     for recognition and temporal localization |        |               |
+| 2019 | Diving48        | Resound: Towards action  recognition without representation bias. |        |               |
+| 2019 | Jester          | The Jester Dataset: A  Large-Scale Video Dataset of Human Gestures |        |               |
+| 2020 | FineGYM         | FineGym: A Hierarchical Video  Dataset for Fine-grained Action Understanding |        |               |
+| 2020 | OmniSource      | Omni-sourced Webly-supervised  Learning for Video Recognition |        |               |
+| 2020 | HVU             | Large Scale Holistic Video  Understanding                    | 739    | 572K          |
 
 - [ UCF101](https://github.com/open-mmlab/mmaction2/blob/master/tools/data/ucf101/README_zh-CN.md) ([主页](https://www.crcv.ucf.edu/research/data-sets/ucf101/)) (CRCV-IR-12-01) (Soomro, Roshan Zamir, and Shah 2012) is a trimmed video dataset, consisting of realistic web videos with diverse forms of camera motion and illumination. It contains 13,320 video clips with an average length of 180 frames per clip. These are labeled with 101 action classes, ranging from daily life activities to unusual sports. Each video clip is assigned just a single class label. Following the original evaluation scheme, we report the average accuracy over three training/testing splits.
 - [ ActivityNet](https://github.com/open-mmlab/mmaction2/blob/master/tools/data/activitynet/README_zh-CN.md) ([主页](http://activity-net.org/)) (CVPR'2015) (Heilbron et al. 2015) is an untrimmed video dataset. We use the ActivityNet v1.3 release, which consists of more than 648 hours of untrimmed videos from a total of around 20K videos with 1.5 annotations per video, selected from 200 classes. Videos can contain more than one activity, and, typically, large time segments of a video are not related to any activity of interest. In the official split, the distribution among training, validation, and test data is about 50%, 25%, and 25% of the total videos, respectively. Because the annotations for the testing split have not yet been published, we report experimental results on the validation split.
