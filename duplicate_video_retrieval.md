@@ -10,19 +10,7 @@ Xiushan Nie, Chaoran Cui : Shandong Jianzhu University/Shandong University of Fi
 
 数据集：
 
-SVD
-
-CCWEB
-
-UQ_VIDEO
-
-VCDB
-
-MUSCLE_VCD
-
-TRECVID
-
-
+![img](duplicate_video_retrieval.assets/IMI%7B_L8T0EK$LN%5D%5DP15HKTX-16373040449921.png)
 
 相关比赛
 
