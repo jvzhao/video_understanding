@@ -59,7 +59,7 @@ Gate-Shift Networks for Video Action Recognition: S3D GST CSN TSM GSM都是对3D
 
 [mmaction2](https://github.com/open-mmlab/mmaction2/blob/master/README_zh-CN.md)是一款基于 PyTorch 的视频理解开源工具箱，是 [OpenMMLab](http://openmmlab.org/) 项目的成员之一。
 
-### [综述](https://kns.cnki.net/kcms/detail/detail.aspx?dbcode=CDFD&dbname=CDFDLAST2021&filename=1020088389.nh&uniplatform=NZKPT&v=I-qi2lPeIGnyDU6ug2XUWTTJ4KMmmokT-gspiml2lup2RduoGE0rsver9FZ9I-go)
+### [综述1](https://kns.cnki.net/kcms/detail/detail.aspx?dbcode=CDFD&dbname=CDFDLAST2021&filename=1020088389.nh&uniplatform=NZKPT&v=I-qi2lPeIGnyDU6ug2XUWTTJ4KMmmokT-gspiml2lup2RduoGE0rsver9FZ9I-go)
 
 在视频数据分析发展之初，研究人员通常针对每一种视频理解任务甚至每一个数据集独立设计方案。
 
@@ -79,6 +79,43 @@ Gate-Shift Networks for Video Action Recognition: S3D GST CSN TSM GSM都是对3D
 
 在计算机视觉研究中，上下文通常指视觉数据中某个主体 (如图片物体或视频行为) 周围的信息。作为重要的视觉信息来源，上下文可以为视频理解研究提供主体与背景或主体与其他主体之间的联系。很多研究者都建议将时空上下文融入视频分析模型中，以进一步地提升视频分类性能。在文献 [44] (What do 15,000 Object CategoriesTell Us About Classifying and Localizing Actions? CVPR 2015 )中，Jain 等人观察到视频中某类动作总是对应着检测到某几种物体的共同出现，如遛狗这个动作通常会出现人和狗，进而研究了视频动作与某些类别物体之间的上下文关系。在文献 [45] (Harnessing Object and Scene Semantics forLarge-Scale Video Understanding CVPR 2016)中，吴祖煊等人指出视频动作与物体及场景都存在着语义联系，通过实验证明利用这种上下文关系可以有效改善视频分类效果。为了对视频中物体在时序上的上下文依赖关系建模，周博磊等人提出了时序关系推理网络 (TemporalRelational Reasoning Network, TRN)(Proceedings of the European Conference on Computer Vision ECCV 2018) 来提取视频特征。受益于时序上下文，该模型对于在时序上具有一定方向性的动作，分类效果的提升尤为明显。
 
+[综述2](https://zhuanlan.zhihu.com/p/422235052)
+
+**2.1 动作识别简介**
+
+动作识别的目标是识别出视频中出现的动作，通常是视频中人的动作。视频可以看作是由一组图像帧按时间顺序排列而成的数据结构，比图像多了一个时间维度。动作识别不仅要分析视频中每帧图像的内容，还需要从视频帧之间的时序信息中挖掘线索。动作识别是视频理解的核心领域，虽然动作识别主要是识别视频中人的动作，但是该领域发展出来的算法大多数不特定针对人，也可以用于其他视频分类场景。
+
+动作识别看上去似乎是图像分类领域向视频领域的一个自然延伸，深度学习尽管在图像分类领域取得了举世瞩目的成功，目前深度学习算法在图像分类上的准确率已经超过普通人的水平，但是，深度学习在动作识别领域的进展并不像在图像分类领域那么显著，很长一段时间基于深度学习算法的动作识别准确率达不到或只能接近传统动作识别算法的准确率。概括地讲，动作识别面临以下几点困难:
+
+- 训练视频模型所需的计算量比图像大了一个量级，这使得视频模型的训练时长和训练所需的硬件资源相比图像大了很多，导致难以快速用实验进行验证和迭代；
+- 在 2017 年，Kinetics 数据集 (Carreira & Zisserman, 2017) 诞生之前， 缺少大规模通用的视频基准 (Benchmark) 数据集。在很长一段时间里，研究者都是在如 UCF-101 数据集 (Soomro et al., 2012) 上比较算法准 确率，而 UCF-101 只有 1.3 万条数据，共 101 个类别，平均每个类别只有约 100 个视频，相比于图像分类领域的 ImageNet 数据集有 128 万 条数据，共 1000 个类别，平均每个类别约有 1,000 个视频，UCF-101 数据集显得十分小。数据集规模制约了动作识别领域的发展；
+- 学习视频中帧之间的时序关系，尤其是长距离的时序关系，本身就比较难。不同类型的动作变化快慢和持续时长有所不同，不同的人做同一个动作的方式也存在不同，同时相机拍摄角度和相机自身的运动也会对识别带来挑战。此外，不是视频中所有的帧对于动作识别都有相同的作用，有许多帧存在信息冗余；
+- 网络结构设计缺少公认的方案。图像分类领域的网络结构设计有一些公认的指导理念，例如，端到端训练、小卷积核、从输入到输出空间分辨率不断降低且通道数不断增大等。然而，在动作识别领域，同时存在多个网络设计理念，例如，帧之间的时序关系应该如何捕捉、使用 2D 卷积还是 3D 卷积、不同帧的特征应该如何融合等都还没有定论。
+
+**2.2 基于 2D 卷积的动作识别**
+
+视频是由一系列图像帧（Frame）组成的，图像分类模型经过这些年的发展已经相对成熟。如何进行视频分类呢？一种直观的想法是将图像分类的模型直接运用到视频分类中。如下图所示，一个简单的想法是先把视频各帧提取出来，每帧图像各自前馈（Feedforward）一个图像分类模型，不同帧的图像分类模型之间相互共享参数。得到每帧图像的特征之后，对各帧图像特征进行汇合（Pooling），例如采用平均汇合，得到固定维度的视频特征，最后经过一个全连接层和 Softmax 激活函数进行分类以得到视频的类别预测。
+
+![利用图像分类模型和平均汇合进行动作识别网络结构图](video_classification.assets/%E5%88%A9%E7%94%A8%E5%9B%BE%E5%83%8F%E5%88%86%E7%B1%BB%E6%A8%A1%E5%9E%8B%E5%92%8C%E5%B9%B3%E5%9D%87%E6%B1%87%E5%90%88%E8%BF%9B%E8%A1%8C%E5%8A%A8%E4%BD%9C%E8%AF%86%E5%88%AB%E7%BD%91%E7%BB%9C%E7%BB%93%E6%9E%84%E5%9B%BE.png)
+
+平均汇合方法十分简单，其视频分类的准确率与其他同时期专门为动作识别设计的深度学习模型相比差距并不大 (Karpathy et al., 2014) ，但是与传统动作识别算法的准确率相比还有很大差距，不过后来专门为动作识别设计的深度学习模型的准确率高了很多。
+
+最直观的想法是先把视频拆成一帧帧的图像，每帧图像各自用一个图像分类模型得到帧级别的特征，然后用某种汇合方法从帧级别特征得到视频级别特征，最后进行分类预测，其中的汇合方法包括: 平均汇合、NetVLAD/NeXtVLAD、NetFV、RNN、3D 卷积等。另外，我们可以借助一些传统算法来补充时序关系，例如，双流法利用光流显式地计算帧之间的运动关系，TDD 利用 iDT 计算的轨迹进行汇合等。基于 2D 卷积的动作识别方法的一个优点是可以快速吸收图像分类领域的最新成果，通过改变骨架网络，新的图像分类模型可以十分方便地迁移到基于 2D 卷积的动作识别方法中。
+
+![基于2D卷积的动作识别算法](video_classification.assets/%E5%9F%BA%E4%BA%8E2D%E5%8D%B7%E7%A7%AF%E7%9A%84%E5%8A%A8%E4%BD%9C%E8%AF%86%E5%88%AB%E7%AE%97%E6%B3%95.png)
+
+**2.3 基于 3D 卷积的动作识别**
+
+另一方面，图像是三维的，而视频比图像多了一维，是四维。图像使用的是 2D 卷积，因此视频使用的是 3D 卷积。我们可以设计对应的 3D 卷积神经网络，就像在图像分类中利用 2D 卷积可以从图像中学习到复杂的图像表示一样，利用 3D 卷积可以从视频片段中同时学习图像特征和相邻帧之间复杂的时序特征，最后利用学到的高层级特征进行分类。
+
+相比于 2D 卷积，3D 卷积可以学习到视频帧之间的时序关系。我们可以将 2D 卷积神经网络扩展为对应的 3D 卷积神经网络，如 C3D、Res3D/3D ResNet、LTC、I3D 等。由于 3D 卷积神经网络的参数量和计算量比 2D 卷积神经网络大了很多，不少研究工作专注于对 3D 卷积进行低秩近似，如 FSTCN、P3D、R(2+1)D、S3D 等。TSM 对 2D 卷积进行改造以近似 3D 卷积的效果。3D 卷积 + RNN、ARTNet、Non-Local、SlowFast 等从不同角度学习视频帧之间的时序关系。此外，多网格训练和 X3D 等对 3D 卷积神经网络的超参数进行调整，使网络更加精简和高效。
+
+![基于3D卷积的动作识别算法](video_classification.assets/%E5%9F%BA%E4%BA%8E3D%E5%8D%B7%E7%A7%AF%E7%9A%84%E5%8A%A8%E4%BD%9C%E8%AF%86%E5%88%AB%E7%AE%97%E6%B3%95.png)
+
+
+
+
+
 深度学习的视频特征：
 
 双流体系：
@@ -95,6 +132,8 @@ Gate-Shift Networks for Video Action Recognition: S3D GST CSN TSM GSM都是对3D
 延续TSN的思想，该策略的原理为：首先将未修剪的视频分成一系列具有固定持续时间的短窗口，然后，对每个窗口进行独立的动作识别，对这些片段级的动作识别分数用max pooling操作 ，最后根据TSN网络框架的聚合功能，采用top-k或者adaptive attention weighting来聚合这些窗口的预测，从而产生视频级的预测结果。由于该聚合模块具有隐式地选择具有区分动作实例的区间，同时抑制噪声背景干扰的能力，所以对于非约束视频识别是有效的。
 
 详细内容参考:https://blog.csdn.net/vincent_zbt/article/details/83062094
+
+TSN则是对每帧图像进行分类，对分类结果求均值。该模型没有任何的时间编码能力，最后的预测结果也与帧的时序无关。
 
 [Unified Spatio-Temporal Attention Networks for Action Recognition in Videos(TMM2019)](https://ieeexplore.ieee.org/abstract/document/8424031):在双流结构的基础上引入时空注意力机制
 
@@ -114,6 +153,8 @@ Gate-Shift Networks for Video Action Recognition: S3D GST CSN TSM GSM都是对3D
 
 详细解读参考: https://zhuanlan.zhihu.com/p/378713640
 
+C3D在缺乏足够大数据集的情况下进行大规模训练，性能一般不佳。而且模型训练过程涉及大量的参数和计算量
+
 [Learning Spatio-Temporal Representation with Pseudo-3D Residual Networks(ICCV2017)](https://openaccess.thecvf.com/content_ICCV_2017/papers/Qiu_Learning_Spatio-Temporal_Representation_ICCV_2017_paper.pdf) P3D
 
 作者认为，之前提出的3D卷积核对于提取时空特征有帮助，带来的代价是，3D卷积核的参数量和计算量比2D卷积核大很多。**作者指出，为什么不直接基于现有的2D深度卷积神经网络来设计3D深度卷积神经网络呢？做法就是：将3x3x3的卷积核，分解为1x3x3的空间卷积核和3x1x1的时间卷积核。**作者将1x3x3的空间卷积核和3x1x1的时间卷积核，替换ResNet模型的2D卷积核，提出了Pseudo-3D Residual Net(P3D ResNet)。该模型在Sports-1M 视频分类数据集上，对比3D CNN和基于帧的2D CNN分别提升5.3%和1.8%
@@ -132,6 +173,8 @@ Gate-Shift Networks for Video Action Recognition: S3D GST CSN TSM GSM都是对3D
 详细解读参考:https://zhuanlan.zhihu.com/p/433384677
 
 C3D最早广泛使用，I3D膨胀二维卷积核，P3D和R(2+1)D是分解三维卷积核
+
+
 
 
 
