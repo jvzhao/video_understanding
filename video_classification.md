@@ -143,6 +143,16 @@ TSN则是对每帧图像进行分类，对分类结果求均值。该模型没�
 
 详细解读参考:https://blog.csdn.net/zxcvbnm2333/article/details/86489859 和 https://zhuanlan.zhihu.com/p/266383350
 
+[SlowFast Networks for Video Recognition(ICCV2019)](https://arxiv.org/pdf/1812.03982.pdf):提出了用于视频分类的快慢结合的Two-Stream模型：（1）Slow网络，输入低帧率，用于提取空间语义信息；（2）Fast网络，输入高帧率，用于提取运动信息。因为，Fast网络的输入是高帧率的，为了减少计算量，作者设计成轻量级的Fast网络模型，减少了Fast网络的通道数。
+
+详细解读参考:https://zhuanlan.zhihu.com/p/382763075
+
+[Temporal Relational Reasoning in Videos(ECCV2018)](http://relation.csail.mit.edu/):
+
+![TRN](video_classification.assets/TRN-16374643431304.png)
+
+详细解读见：https://zhuanlan.zhihu.com/p/383750515
+
 3DCNN:
 
 [Learning Spatiotemporal Features With 3D Convolutional Networks(ICCV2015)](https://openaccess.thecvf.com/content_iccv_2015/html/Tran_Learning_Spatiotemporal_Features_ICCV_2015_paper.html) C3D 作者提出了基于3D卷积核的深度卷积神经网络，主要有三大贡献：
@@ -174,9 +184,18 @@ C3D在缺乏足够大数据集的情况下进行大规模训练，性能一般�
 
 C3D最早广泛使用，I3D膨胀二维卷积核，P3D和R(2+1)D是分解三维卷积核
 
+[Video Classification with Channel-Separated Convolutional Networks(iccv 2019)](https://openaccess.thecvf.com/content_ICCV_2019/papers/Tran_Video_Classification_With_Channel-Separated_Convolutional_Networks_ICCV_2019_paper.pdf):
 
+这篇文章主要研究了不同的分组3D卷积设计是如何影响视频分类任务的。作者认为通道之间的互相交流（channel interaction）对于分类任务的准确率扮演着很重要的作用，对此他们有两大主要发现 ：
 
+1. 分解3D卷积通过分开通道间相互作用和时空域信息的交互将对于提高准确率和节省计算量有很好的帮助。
+2. 将3D卷积进行通道分离这种方法从某种程度上说可以等效成一种正则化，虽然在训练集上的准确率不高，但在测试集上表现出跟高的准确率。
 
+对此这两大发现，作者设计出了一种名为通道分离卷积网络（CSN），它简易、精准而且快速（相比其它SOTA方法可以提高2-3倍速度），并且准确率可以达到SOTA。
+
+详细解读参考：https://zhuanlan.zhihu.com/p/143765575
+
+(3D卷积变形？)关于TSM,TIN,GSN,GSM几个运用Shift思想的网络的解读:https://zhuanlan.zhihu.com/p/137385332
 
 ### 数据集:
 
@@ -220,6 +239,12 @@ C3D最早广泛使用，I3D膨胀二维卷积核，P3D和R(2+1)D是分解三维�
 - [Moments in Time](https://github.com/open-mmlab/mmaction2/blob/master/tools/data/mit/README_zh-CN.md) ([主页](http://moments.csail.mit.edu/)) (TPAMI'2019) consists of 800 000, 3-second YouTube clips that capture the gist of a dynamic scene involving animals, objects, people, or natural phenomena.
 - Something-Something v2 (SSv2) [26] contains 220 000 videos, with durations ranging from 2 to 6 seconds. In contrast to the other datasets, the objects and backgrounds in the videos are consistent across different action classes, and this dataset thus places more emphasis on a model’s ability to recognise fine-grained motion cues.
 - Epic Kitchens-100 consists of egocentric videos capturing daily kitchen activities spanning 100 hours and 90 000 clips . We report results following the standard “action recognition” protocol. Here, each video is labelled with a “verb” and a “noun” and we therefore predict both categories using a single network with two “heads”. The topscoring verb and action pair predicted by the network form an “action”, and action accuracy is the primary metric.
+
+[Video Dataset Overview](https://www.di.ens.fr/~miech/datasetviz/)
+
+[Video Action Understanding](https://arxiv.org/pdf/2010.06647.pdf)
+
+![数据集整理](video_classification.assets/%E6%95%B0%E6%8D%AE%E9%9B%86%E6%95%B4%E7%90%86-16374977835975.png)
 
 ### 文章内容
 
