@@ -107,7 +107,7 @@ SE：Squeeze-and-Excitation的缩写，特征压缩与激发的意思。
 
 预训练技术首先通过大规模无监督或半监督任务使模型能够尽可能多的学习到通用先验知识，然后在下游任务中进行微调，以实现知识的迁移。这种预训练+微调的模型训练方式使得在下游任务中深度模型仅需学习一些任务相关性的知识，而无需重新开始学习，因而能够显著降低下游任务对标注数据的依赖，并提高模型在小数据集上的泛化能力。
 
-![预训练模型团队](pretrain_modal.assets/%E9%A2%84%E8%AE%AD%E7%BB%83%E6%A8%A1%E5%9E%8B%E5%9B%A2%E9%98%9F-16384094910332.png)
+![预训练模型团队](pretrain_model.assets/%E9%A2%84%E8%AE%AD%E7%BB%83%E6%A8%A1%E5%9E%8B%E5%9B%A2%E9%98%9F-16384094910332.png)
 
 上图统计了目前预训练领域的一些团队的研究成果和研究方向。整体而言，目前预训练领域呈现模型参数膨胀，多模态的趋势。对于大型企业而言，由于预训练模型对于企业内部业务的广泛支撑，以及企业自身所拥有的相对充分的计算资源，近两年来，大规模预训练模型已经演化成为大公司在人工智能领域中的“军备竞赛”。
 
@@ -131,9 +131,9 @@ SE：Squeeze-and-Excitation的缩写，特征压缩与激发的意思。
 - 模型加速：在模型结构上进行优化，在保持模型泛化能力的同时降低模型的参数量，提高模型运行的高效性，如 TinyBERT 和 MiniLM。
 - 中文特色：针对中文数据集进行模型改进和训练，如 ERNIE、AMBERT。
 
-![预训练模型分类](pretrain_modal.assets/%E9%A2%84%E8%AE%AD%E7%BB%83%E6%A8%A1%E5%9E%8B%E5%88%86%E7%B1%BB-16384094177751.png)
+![预训练模型分类](pretrain_model.assets/%E9%A2%84%E8%AE%AD%E7%BB%83%E6%A8%A1%E5%9E%8B%E5%88%86%E7%B1%BB-16384094177751.png)
 
-![img](pretrain_modal.assets/v2-f3d52372418e3e07ae67a2b21097a2dc_720w.jpg)
+![img](pretrain_model.assets/v2-f3d52372418e3e07ae67a2b21097a2dc_720w.jpg)
 
 
 
@@ -141,29 +141,29 @@ SE：Squeeze-and-Excitation的缩写，特征压缩与激发的意思。
 
 如图所示，计算机视觉根据网络结构可以分为两个阶段。在 2020 年之前，CV 领域中的网络模型主要以 CNN 为主。CNN 中所用到的卷积操作因为具有良好的旋转、平移不变性以及强大的局部特征提取能力，天然适合处理图像相关任务。典型工作如 ResNet、GhostNet、Xception 和 EfficientNet。
 
-![cnn](pretrain_modal.assets/cnn-16384096780083.png)
+![cnn](pretrain_model.assets/cnn-16384096780083.png)
 
 2020 年被提出的 ViT 模型（如图 1.4 所示)挑战了 CNN 在 CV 领域中的主导地位。ViT 在网络结构上没有使用卷积操作，它结合了 Transformer 和 Patch 编码，通过在 JFT-300M 大规模图像数据集上预训练，在多个下游榜单上的性能超过 SOTA CNN 模型。同时，ViT 也通过实验证明了 Transformer 结构对大规模数据的拟合能力。之后，Transformer 结构和大规模预训练成为了 CV 领域的研究热点，一些经典工作，如 ViT、DeiT、CaiT、CCT、LeViT 也相继被提出。
 
-![img](pretrain_modal.assets/v2-a79ea3fb01387365edef8cfbf7a5c3e3_720w-16384097048075.jpg)
+![img](pretrain_model.assets/v2-a79ea3fb01387365edef8cfbf7a5c3e3_720w-16384097048075.jpg)
 
-![mileStone](pretrain_modal.assets/mileStone.png)
+![mileStone](pretrain_model.assets/mileStone.png)
 
-![visionTransformer](pretrain_modal.assets/visionTransformer-163842715038830.png)
+![visionTransformer](pretrain_model.assets/visionTransformer-163842715038830.png)
 
 
 
 另一种和“微调+预训练”模式比较接近得方法就是对比学习。对比学习同样用的是没有标注的数据，也就是说数据集里只有图片而没有标签。**对比学习的目标是学习一个[编码器](https://www.zhihu.com/search?q=编码器&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra={"sourceType"%3A"article"%2C"sourceId"%3A425381200})，此编码器对同类数据进行相似的编码，并使不同类的数据的编码结果尽可能的不同**。也就是说对比学习本质上其实就是用了[聚类](https://www.zhihu.com/search?q=聚类&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra={"sourceType"%3A"article"%2C"sourceId"%3A425381200})的思想：**缩小与正样本间的距离，扩大与负样本间的距离**。如下面的公式所示：
 
-![对比学习公式](pretrain_modal.assets/%E5%AF%B9%E6%AF%94%E5%AD%A6%E4%B9%A0%E5%85%AC%E5%BC%8F-163842691281926.png)
+![对比学习公式](pretrain_model.assets/%E5%AF%B9%E6%AF%94%E5%AD%A6%E4%B9%A0%E5%85%AC%E5%BC%8F-163842691281926.png)
 
 其中 d() 代表样本之间的距离。
 
-![对比学习](pretrain_modal.assets/%E5%AF%B9%E6%AF%94%E5%AD%A6%E4%B9%A0-163842697648428.gif)
+![对比学习](pretrain_model.assets/%E5%AF%B9%E6%AF%94%E5%AD%A6%E4%B9%A0-163842697648428.gif)
 
 现在就能把问题转换成了，如何构建正负样本的问题。如上图所示，大多数都是通过数据增强的方法来创建正负样本的，即，同一张图片进行不同数据增强方法得到样本就是正样本，不同图片数据增强得到的样本就是负样本，然后根据上面聚类的思想来进行训练。因此，大部分对比学习的 pipeline 都如下图所示：
 
-![对比学习pipeline](pretrain_modal.assets/%E5%AF%B9%E6%AF%94%E5%AD%A6%E4%B9%A0pipeline-163842700555229.jpg)
+![对比学习pipeline](pretrain_model.assets/%E5%AF%B9%E6%AF%94%E5%AD%A6%E4%B9%A0pipeline-163842700555229.jpg)
 
 
 
@@ -173,21 +173,21 @@ SE：Squeeze-and-Excitation的缩写，特征压缩与激发的意思。
 
 多模态预训练技术的产生和兴起的背景因素可以大致概括为三个方面：
 
-1. 通过融合多模态信息，可以扩充模型所能表达的特征空间。由于不同模态之间具有很强的信息互补性，因此通过合适的模型训练，可以得到更具有区分性的特征表示。![img](pretrain_modal.assets/v2-7915d217579e82d98a3ca313108e9346_720w-16384109575737-16384109598629.jpg)
-2. 数据来源广：网络上具有庞大的天然图像-文本对（简称图-文对），如图像和自身的标题，图像和围绕图像的描述语。![img](pretrain_modal.assets/v2-030f070edcd25be198e5f10757bafab9_720w-163841099561211.jpg)
-3. 多模态模型具有广阔的应用前景。如跨模态搜索、图像的标题生成以及人机互动等。![img](pretrain_modal.assets/v2-794ed30feb2c7f6432f21041ba82f604_720w-163841102339113.jpg)
+1. 通过融合多模态信息，可以扩充模型所能表达的特征空间。由于不同模态之间具有很强的信息互补性，因此通过合适的模型训练，可以得到更具有区分性的特征表示。![img](pretrain_model.assets/v2-7915d217579e82d98a3ca313108e9346_720w-16384109575737-16384109598629.jpg)
+2. 数据来源广：网络上具有庞大的天然图像-文本对（简称图-文对），如图像和自身的标题，图像和围绕图像的描述语。![img](pretrain_model.assets/v2-030f070edcd25be198e5f10757bafab9_720w-163841099561211.jpg)
+3. 多模态模型具有广阔的应用前景。如跨模态搜索、图像的标题生成以及人机互动等。![img](pretrain_model.assets/v2-794ed30feb2c7f6432f21041ba82f604_720w-163841102339113.jpg)
 
 ## **二、多模态预训练的现状和趋势**
 
 ### **2.1 模型规模**
 
-![img](pretrain_modal.assets/v2-193f2550a7e7c49eed04f06a00a0389f_720w-163841110410415.jpg)
+![img](pretrain_model.assets/v2-193f2550a7e7c49eed04f06a00a0389f_720w-163841110410415.jpg)
 
 表 2.1 总结了从 2019 年 8 月至 2021 年 10 月的一些典型预训练模型的基本信息。可以看出，随着时间的推移，模型的参数量和训练数据量都呈指数形式扩充。大模型、大数据量成为了目前多模态预训练的发展趋势。此外，由于对训练资源要求较高，多模态预训练领域目前仍以大型企业为主导。
 
 ### **2.2 数据集**
 
-![img](pretrain_modal.assets/v2-f78b25e5b0818836afec0986dfa17209_720w-163841114345917.jpg)
+![img](pretrain_model.assets/v2-f78b25e5b0818836afec0986dfa17209_720w-163841114345917.jpg)
 
 从 2018 年 7 月至 2021 年 8 月，多模态预训练数据规模呈指数上升，数据通常采集自互联网上的图-文对，并且以无监督数据为主。近期最大的多模态预训练数据集**[LAION-400M](https://link.zhihu.com/?target=https%3A//laion.ai/laion-400-open-dataset)**开源，为更大规模的预训练模型提供了数据基础。
 
@@ -199,7 +199,7 @@ SE：Squeeze-and-Excitation的缩写，特征压缩与激发的意思。
 
 随机遮盖文本的某些 token，用其余 token 和其他信息（图像/视频）预测被遮盖的 token。
 
-![Masked_Language_Modeling](pretrain_modal.assets/Masked_Language_Modeling-163841129167220.png)
+![Masked_Language_Modeling](pretrain_model.assets/Masked_Language_Modeling-163841129167220.png)
 
 **NSP （Next Sentence Prediction ）** ：
 
@@ -209,19 +209,19 @@ SE：Squeeze-and-Excitation的缩写，特征压缩与激发的意思。
 
 根据图像/视频和它对应的文本构造正负图-文对。
 
-![Image_Text_Matching](pretrain_modal.assets/Image_Text_Matching.png)
+![Image_Text_Matching](pretrain_model.assets/Image_Text_Matching.png)
 
 **Augmentation-based Contrastive Learning (by MOCO)**
 
 对图像随机增强两次，来自同一原始图像的样本构成正样本对，否则为负样本对。
 
-![Augmentation_based_Contrastive_Learning](pretrain_modal.assets/Augmentation_based_Contrastive_Learning-163841142351821-163841142569122.png)
+![Augmentation_based_Contrastive_Learning](pretrain_model.assets/Augmentation_based_Contrastive_Learning-163841142351821-163841142569122.png)
 
 **Prefix Language Modeling**
 
 根据文本前面的 token 生成后面的 token，其中图像信息作为文本模态的先验。
 
-![img](pretrain_modal.assets/D_15%7D4$ZHN%60AN$O$IJL%7D3_J-163841146069423.png)
+![img](pretrain_model.assets/D_15%7D4$ZHN%60AN$O$IJL%7D3_J-163841146069423.png)
 
 先遮盖图像中某些表示物体的区域，然后用图像的其他区域信息回归被遮盖的区域。
 
@@ -231,11 +231,11 @@ SE：Squeeze-and-Excitation的缩写，特征压缩与激发的意思。
 
 在 Masked Region Classification（MRC）预训练任务中，需要在 [region token](https://www.zhihu.com/search?q=region+token&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra={"sourceType"%3A"article"%2C"sourceId"%3A425381200}) 中随机 mask 掉一些 token，然后根据其他的图片 token 和所有的文本 token 来预测这些被 mask 的 token。具体来说就是，每个 region 都会有 Faster R-CNN 得到一个 label，模型需要预测 mask token 的类别，使之和 Faster R-CNN 的 label 相同。
 
-![MRC](pretrain_modal.assets/MRC-163842729397831.png)
+![MRC](pretrain_model.assets/MRC-163842729397831.png)
 
 **MRM 预训练任务 （MRC-KL ）**
 
-![MRC-KL](pretrain_modal.assets/MRC-KL-163842735074732.png)
+![MRC-KL](pretrain_model.assets/MRC-KL-163842735074732.png)
 
 在 Masked Region Classification-KL Divergence（MRC-KL）预训练任务中，同样是随机 mask region token，但是不同的这里不是做分类任务，而是需要计算 Faster R-CNN 特征和 Mask region 的分布差异，使得 Mask region 的分布和 Faster R-CNN 特征的分布尽可能相似，所以损失函数用的是 KL [散度](https://www.zhihu.com/search?q=散度&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra={"sourceType"%3A"article"%2C"sourceId"%3A425381200})。
 
@@ -263,7 +263,7 @@ SE：Squeeze-and-Excitation的缩写，特征压缩与激发的意思。
 
 一个预训练模型可以同时支撑多个下游任务，如 VQA、Image Captioning、Text-Image Retrieval 等，表 2.3 列举了一些常见的下游任务。
 
-![下游任务](pretrain_modal.assets/%E4%B8%8B%E6%B8%B8%E4%BB%BB%E5%8A%A1-163841153217624.png)
+![下游任务](pretrain_model.assets/%E4%B8%8B%E6%B8%B8%E4%BB%BB%E5%8A%A1-163841153217624.png)
 
 ### **2.5 业界应用现状**
 
