@@ -92,6 +92,8 @@ SE：Squeeze-and-Excitation的缩写，特征压缩与激发的意思。
 
 从多篇2021年顶会论文看多模态预训练模型最新研究进展 - PaperWeekly的文章 - 知乎 https://zhuanlan.zhihu.com/p/425381200
 
+最新多模态预训练模型综述 - 陌陌的文章 - 知乎 https://zhuanlan.zhihu.com/p/430513557
+
 赛尔笔记 | 多模态预训练模型简述 - 忆臻的文章 - 知乎 https://zhuanlan.zhihu.com/p/368770188
 
 多模态中预训练的演变史 - multimodel侠的文章 - 知乎 https://zhuanlan.zhihu.com/p/427323610
