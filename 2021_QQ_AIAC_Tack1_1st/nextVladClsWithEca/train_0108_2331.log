@@ -1,0 +1,121 @@
+23:31:00 [INFO] Start
+23:31:00 [INFO] ==================================================================
+23:31:00 [INFO] Config - pretrain:
+# Pretrain file num
+PRETRAIN_FILE_NUM = 20
+LOAD_DATA_TYPE = 'mem'#'fluid'
+# Training params
+NUM_FOLDS = 1
+SEED = 2021
+BATCH_SIZE = 128
+NUM_EPOCHS = 40
+WARMUP_RATIO = 0.06
+REINIT_LAYER = 0
+WEIGHT_DECAY = 0.01
+LR = {'others':5e-4, 'roberta':5e-5, 'newfc_videoreg':5e-4}
+LR_LAYER_DECAY = 1.0
+PRETRAIN_TASK = ['tag', 'mlm', 'mfm']
+23:31:00 [INFO] ==================================================================
+23:31:00 [INFO] Config - model:
+MODEL_TYPE = 'uni'#'all', 'cross', 'frame', 'bi', 'uni'
+
+MODEL_CONFIG = {
+    'INPUT_SIZE': 1792,
+    'HIDDEN_SIZE': 256,
+    'NUM_CLASSES': 10000,
+    'FEATURE_SIZE': 1536,
+    'OUTPUT_SIZE': 1024,
+    'EXPANSION_SIZE': 2,
+    'CLUSTER_SIZE': 64,
+    'NUM_GROUPS': 8,
+    'DROPOUT_PROB': 0.2,
+}
+
+BERT_CFG_DICT = {}
+BERT_CFG_DICT['uni'] = {
+    'hidden_size':768,
+    'num_hidden_layers':6,
+    'num_attention_heads':12,
+    'intermediate_size':3072,
+    'hidden_dropout_prob':0.0,
+    'attention_probs_dropout_prob':0.0
+}
+23:31:00 [INFO] ==================================================================
+23:31:00 [INFO] Config - data:
+DATA_PATH = '../input/data'
+BERT_PATH = '../input/pretrain-model/roberta-wwm-large'
+
+DESC = {
+    'tag_id':"int",
+    'id': 'byte',
+    'category_id': 'int',
+    'title': 'byte',
+    'asr_text': 'byte',
+    'frame_feature': 'bytes'
+}
+
+DESC_NOTAG = {
+    'id': 'byte',
+    'title': 'byte',
+    'asr_text': 'byte',
+    'frame_feature': 'bytes'
+}
+23:31:00 [INFO] Model_type = uni
+23:31:01 [INFO] ==================================================================
+23:31:01 [INFO] Fold=1/1 seed=2021
+23:31:01 [INFO] Load data into memory
+23:37:54 [INFO] Dataset used memory = 56.2GB
+23:37:54 [INFO] Total train steps=312500, warmup steps=18750
+23:40:58 [INFO] Epoch=1/40|step= 20|val_acc=3.001e-06|time=8.86s|New best_acc=3.001e-06
+23:45:16 [INFO] Epoch=1/40|step=500|val_acc=4.867e-06|time=1.05e+02s|New best_acc=4.867e-06
+23:49:41 [INFO] Epoch=1/40|step=1000|val_acc=1.736e-05|time=1.09e+02s|New best_acc=1.736e-05
+23:54:07 [INFO] Epoch=1/40|step=1500|val_acc=2.634e-05|time=1.09e+02s|New best_acc=2.634e-05
+23:58:29 [INFO] Epoch=1/40|step=2000|val_acc=3.323e-05|time=1.09e+02s|New best_acc=3.323e-05
+00:02:53 [INFO] Epoch=1/40|step=2500|val_acc=3.99e-05|time=1.1e+02s|New best_acc=3.99e-05
+00:07:17 [INFO] Epoch=1/40|step=3000|val_acc=5.108e-05|time=1.1e+02s|New best_acc=5.108e-05
+00:11:40 [INFO] Epoch=1/40|step=3500|val_acc=6.792e-05|time=1.09e+02s|New best_acc=6.792e-05
+00:16:01 [INFO] Epoch=1/40|step=4000|val_acc=9.317e-05|time=1.09e+02s|New best_acc=9.317e-05
+00:20:24 [INFO] Epoch=1/40|step=4500|val_acc=0.0001259|time=1.09e+02s|New best_acc=0.0001259
+00:24:48 [INFO] Epoch=1/40|step=5000|val_acc=0.0001653|time=1.1e+02s|New best_acc=0.0001653
+00:29:13 [INFO] Epoch=1/40|step=5500|val_acc=0.0002125|time=1.09e+02s|New best_acc=0.0002125
+00:33:35 [INFO] Epoch=1/40|step=6000|val_acc=0.0002534|time=1.09e+02s|New best_acc=0.0002534
+00:37:57 [INFO] Epoch=1/40|step=6500|val_acc=0.0003038|time=1.1e+02s|New best_acc=0.0003038
+00:42:20 [INFO] Epoch=1/40|step=7000|val_acc=0.0003457|time=1.09e+02s|New best_acc=0.0003457
+00:46:43 [INFO] Epoch=1/40|step=7500|val_acc=0.0003795|time=1.09e+02s|New best_acc=0.0003795
+00:50:15 [INFO] val_acc=0.00037946510105160274
+00:53:31 [INFO] Epoch=2/40|step=8000|val_acc=0.0003953|time=2.59e+02s|New best_acc=0.0003953
+00:57:54 [INFO] Epoch=2/40|step=8500|val_acc=0.0004211|time=1.1e+02s|New best_acc=0.0004211
+01:02:17 [INFO] Epoch=2/40|step=9000|val_acc=0.0004507|time=1.1e+02s|New best_acc=0.0004507
+01:06:40 [INFO] Epoch=2/40|step=9500|val_acc=0.0004747|time=1.09e+02s|New best_acc=0.0004747
+01:11:04 [INFO] Epoch=2/40|step=10000|val_acc=0.0005112|time=1.09e+02s|New best_acc=0.0005112
+01:15:26 [INFO] Epoch=2/40|step=10500|val_acc=0.0005544|time=1.1e+02s|New best_acc=0.0005544
+01:19:48 [INFO] Epoch=2/40|step=11000|val_acc=0.0006043|time=1.1e+02s|New best_acc=0.0006043
+01:24:10 [INFO] Epoch=2/40|step=11500|val_acc=0.0006607|time=1.1e+02s|New best_acc=0.0006607
+01:28:33 [INFO] Epoch=2/40|step=12000|val_acc=0.0007081|time=1.09e+02s|New best_acc=0.0007081
+01:32:53 [INFO] Epoch=2/40|step=12500|val_acc=0.0007557|time=1.09e+02s|New best_acc=0.0007557
+01:37:15 [INFO] Epoch=2/40|step=13000|val_acc=0.000802|time=1.09e+02s|New best_acc=0.000802
+01:41:36 [INFO] Epoch=2/40|step=13500|val_acc=0.000848|time=1.09e+02s|New best_acc=0.000848
+01:45:58 [INFO] Epoch=2/40|step=14000|val_acc=0.0008947|time=1.09e+02s|New best_acc=0.0008947
+01:50:21 [INFO] Epoch=2/40|step=14500|val_acc=0.0009431|time=1.09e+02s|New best_acc=0.0009431
+01:54:40 [INFO] Epoch=2/40|step=15000|val_acc=0.0009958|time=1.09e+02s|New best_acc=0.0009958
+01:59:02 [INFO] Epoch=2/40|step=15500|val_acc=0.001055|time=1.09e+02s|New best_acc=0.001055
+02:01:52 [INFO] val_acc=0.0010551909557553552
+02:05:53 [INFO] Epoch=3/40|step=16000|val_acc=0.00111|time=2.59e+02s|New best_acc=0.00111
+02:10:16 [INFO] Epoch=3/40|step=16500|val_acc=0.001183|time=1.1e+02s|New best_acc=0.001183
+02:14:38 [INFO] Epoch=3/40|step=17000|val_acc=0.001266|time=1.09e+02s|New best_acc=0.001266
+02:19:14 [INFO] Epoch=3/40|step=17500|val_acc=0.001352|time=1.09e+02s|New best_acc=0.001352
+02:23:40 [INFO] Epoch=3/40|step=18000|val_acc=0.001468|time=1.13e+02s|New best_acc=0.001468
+02:28:02 [INFO] Epoch=3/40|step=18500|val_acc=0.001566|time=1.1e+02s|New best_acc=0.001566
+02:32:24 [INFO] Epoch=3/40|step=19000|val_acc=0.001662|time=1.1e+02s|New best_acc=0.001662
+02:36:45 [INFO] Epoch=3/40|step=19500|val_acc=0.001764|time=1.1e+02s|New best_acc=0.001764
+02:41:04 [INFO] Epoch=3/40|step=20000|val_acc=0.001858|time=1.09e+02s|New best_acc=0.001858
+02:45:26 [INFO] Epoch=3/40|step=20500|val_acc=0.001936|time=1.09e+02s|New best_acc=0.001936
+02:49:47 [INFO] Epoch=3/40|step=21000|val_acc=0.002008|time=1.09e+02s|New best_acc=0.002008
+02:54:08 [INFO] Epoch=3/40|step=21500|val_acc=0.002067|time=1.09e+02s|New best_acc=0.002067
+02:58:27 [INFO] Epoch=3/40|step=22000|val_acc=0.00213|time=1.09e+02s|New best_acc=0.00213
+03:02:49 [INFO] Epoch=3/40|step=22500|val_acc=0.002183|time=1.1e+02s|New best_acc=0.002183
+03:07:10 [INFO] Epoch=3/40|step=23000|val_acc=0.002237|time=1.09e+02s|New best_acc=0.002237
+03:11:09 [INFO] val_acc=0.00223749117076477
+03:14:00 [INFO] Epoch=4/40|step=23500|val_acc=0.002253|time=2.58e+02s|New best_acc=0.002253
+03:18:22 [INFO] Epoch=4/40|step=24000|val_acc=0.002302|time=1.1e+02s|New best_acc=0.002302
+03:22:43 [INFO] Epoch=4/40|step=24500|val_acc=0.002355|time=1.1e+02s|New best_acc=0.002355

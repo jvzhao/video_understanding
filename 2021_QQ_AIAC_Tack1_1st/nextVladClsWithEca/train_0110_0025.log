@@ -1,0 +1,72 @@
+00:25:41 [INFO] Start
+00:25:41 [INFO] ==================================================================
+00:25:41 [INFO] Config - pretrain:
+# Pretrain file num
+PRETRAIN_FILE_NUM = 20
+LOAD_DATA_TYPE = 'mem'#'fluid'
+# Training params
+NUM_FOLDS = 1
+SEED = 2021
+BATCH_SIZE = 128
+NUM_EPOCHS = 40
+WARMUP_RATIO = 0.06
+REINIT_LAYER = 0
+WEIGHT_DECAY = 0.01
+LR = {'others':5e-4, 'roberta':5e-5, 'newfc_videoreg':5e-4}
+LR_LAYER_DECAY = 1.0
+PRETRAIN_TASK = ['tag', 'mlm', 'mfm']
+00:25:41 [INFO] ==================================================================
+00:25:41 [INFO] Config - model:
+MODEL_TYPE = 'uni'#'all', 'cross', 'frame', 'bi', 'uni'
+
+MODEL_CONFIG = {
+    'INPUT_SIZE': 1792,
+    'HIDDEN_SIZE': 256,
+    'NUM_CLASSES': 10000,
+    'FEATURE_SIZE': 1536,
+    'OUTPUT_SIZE': 1024,
+    'EXPANSION_SIZE': 2,
+    'CLUSTER_SIZE': 64,
+    'NUM_GROUPS': 8,
+    'DROPOUT_PROB': 0.2,
+}
+
+BERT_CFG_DICT = {}
+BERT_CFG_DICT['uni'] = {
+    'hidden_size':768,
+    'num_hidden_layers':6,
+    'num_attention_heads':12,
+    'intermediate_size':3072,
+    'hidden_dropout_prob':0.0,
+    'attention_probs_dropout_prob':0.0
+}
+00:25:41 [INFO] ==================================================================
+00:25:41 [INFO] Config - data:
+DATA_PATH = '../input/data'
+BERT_PATH = '../input/pretrain-model/roberta-wwm-large'
+
+DESC = {
+    'tag_id':"int",
+    'id': 'byte',
+    'category_id': 'int',
+    'title': 'byte',
+    'asr_text': 'byte',
+    'frame_feature': 'bytes'
+}
+
+DESC_NOTAG = {
+    'id': 'byte',
+    'title': 'byte',
+    'asr_text': 'byte',
+    'frame_feature': 'bytes'
+}
+00:25:41 [INFO] Model_type = uni
+00:25:41 [INFO] ==================================================================
+00:25:41 [INFO] Fold=1/1 seed=2021
+00:25:41 [INFO] Load data into memory
+00:32:15 [INFO] Dataset used memory = 56.2GB
+00:32:15 [INFO] Total train steps=312500, warmup steps=18750
+00:35:23 [INFO] Epoch=1/40|step= 20|val_acc=1.007e-05|time=8.58s|New best_acc=1.007e-05
+00:39:48 [INFO] Epoch=1/40|step=500|val_acc=6.516e-05|time=1.06e+02s|New best_acc=6.516e-05
+00:44:01 [INFO] Epoch=1/40|step=1000|val_acc=4.679e-05|time=1.1e+02s
+00:48:12 [INFO] Epoch=1/40|step=1500|val_acc=3.961e-05|time=1.1e+02s
